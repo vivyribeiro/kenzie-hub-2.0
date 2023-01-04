@@ -6124,11 +6124,6 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-lx-react-form@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/lx-react-form/-/lx-react-form-1.3.3.tgz#b6e19872c7889d7ac695c025b4be4a1b524d222d"
-  integrity sha512-9usSm0rMS3zM/mmQpuMpjgblqixxVURPiTeJhfD61ir4dnxUwIBwsnTgQoDJBI1VqSI5RIpKg4X4NQszz72wnQ==
-
 lz-string@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
