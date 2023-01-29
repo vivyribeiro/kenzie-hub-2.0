@@ -27,6 +27,8 @@ import {
 	StyledContainerSelect,
 	StyledContainerPassword
 } from "../../styles/form";
+import { Input } from "../../components/Input";
+import { InputPassword } from "../../components/InputPassword";
 
 export interface iRegisterData {
 	bio: string;
@@ -82,12 +84,12 @@ const Register = () => {
 				<ThemeLabelText>Rapido e grátis, vamos nessa</ThemeLabelText>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<StyledContainerInput>
-						<ThemeLabelInput htmlFor="name">Nome</ThemeLabelInput>
-						<ThemeInput
+						<Input
 							placeholder="Digite aqui seu nome"
 							type="text"
 							id="name"
-							{...register("name")}
+							label="Nome"
+							register={register("name")}
 						/>
 						{errors.name && (
 							<ThemeLabelError>
@@ -98,12 +100,12 @@ const Register = () => {
 					</StyledContainerInput>
 
 					<StyledContainerInput>
-						<ThemeLabelInput htmlFor="email">Email</ThemeLabelInput>
-						<ThemeInput
+						<Input
 							placeholder="Digite aqui seu email"
 							type="email"
 							id="email"
-							{...register("email")}
+							label="Email"
+							register={register("email")}
 						/>
 						{errors.email && (
 							<ThemeLabelError>
@@ -114,21 +116,14 @@ const Register = () => {
 					</StyledContainerInput>
 
 					<StyledContainerPassword isPasswordVisible={isPasswordVisible}>
-						<ThemeLabelInput htmlFor="password">Senha</ThemeLabelInput>
-						<ThemeInput
-							placeholder="Digite aqui sua senha"
-							type={isPasswordVisible ? "text" : "password"}
+						<InputPassword
 							id="password"
-							{...register("password")}
+							label="Senha"
+							placeholder="Digite aqui sua senha"
+							showPassword={showPassword}
+							isPasswordVisible={isPasswordVisible}
+							register={register("password")}
 						/>
-						{isPasswordVisible ? (
-							<AiOutlineEye onClick={showPassword} className="form__passIcon" />
-						) : (
-							<AiOutlineEyeInvisible
-								onClick={showPassword}
-								className="form__passIcon"
-							/>
-						)}
 						{errors.password && (
 							<ThemeLabelError>
 								{" "}
@@ -140,7 +135,7 @@ const Register = () => {
 					<StyledContainerPassword
 						isConfirmPasswordVisible={isConfirmPasswordVisible}
 					>
-						<ThemeLabelInput htmlFor="confirmPassword">
+						{/* <ThemeLabelInput htmlFor="confirmPassword">
 							Confirmar Senha
 						</ThemeLabelInput>
 						<ThemeInput
@@ -159,7 +154,15 @@ const Register = () => {
 								onClick={showConfirmPassword}
 								className="form__confirmPassIcon"
 							/>
-						)}
+						)} */}
+						<InputPassword
+							id="confirmPassword"
+							label="Confirmar Senha"
+							placeholder="Digite novamente sua senha"
+							showConfirmPassword={showConfirmPassword}
+							isConfirmPasswordVisible={isConfirmPasswordVisible}
+							register={register("confirmPassword")}
+						/>
 						{errors.confirmPassword && (
 							<ThemeLabelError>
 								<FaInfoCircle /> {errors.confirmPassword.message}
@@ -168,12 +171,12 @@ const Register = () => {
 					</StyledContainerPassword>
 
 					<StyledContainerInput>
-						<ThemeLabelInput htmlFor="bio">Bio</ThemeLabelInput>
-						<ThemeInput
+						<Input
 							placeholder="Fale sobre você"
-							id="bio"
 							type="text"
-							{...register("bio")}
+							id="bio"
+							label="Bio"
+							register={register("bio")}
 						/>
 						{errors.bio && (
 							<ThemeLabelError>
@@ -184,12 +187,12 @@ const Register = () => {
 					</StyledContainerInput>
 
 					<StyledContainerInput>
-						<ThemeLabelInput htmlFor="contact">Contato</ThemeLabelInput>
-						<ThemeInput
+						<Input
 							placeholder="Opção de contato"
-							id="contact"
 							type="url"
-							{...register("contact")}
+							id="contact"
+							label="Contato"
+							register={register("contact")}
 						/>
 						{errors.contact && (
 							<ThemeLabelError>

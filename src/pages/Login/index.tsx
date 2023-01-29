@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { FaInfoCircle } from "react-icons/fa";
 import { BiLoaderCircle } from "react-icons/bi";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { validationLogin } from "./validationLogin";
 import { useUserContext } from "../../contexts/UserContext";
@@ -13,12 +12,12 @@ import { useUserContext } from "../../contexts/UserContext";
 import logo from "../../assets/Logo.svg";
 import StyledSectionLogin from "./style";
 import ThemeLink from "../../styles/link";
+import { Input } from "../../components/Input";
 import { ThemeButton } from "../../styles/button";
 import { ThemeContainerImg } from "../../styles/imgContainer";
+import { InputPassword } from "../../components/InputPassword";
 import { ThemeLabelText, ThemeTitle } from "../../styles/typography";
 import {
-	ThemeInput,
-	ThemeLabelInput,
 	ThemeLabelError,
 	StyledContainerForm,
 	StyledContainerInput,
@@ -67,12 +66,12 @@ const Login = () => {
 				</ThemeTitle>
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<StyledContainerInput>
-						<ThemeLabelInput htmlFor="email">Email</ThemeLabelInput>
-						<ThemeInput
+						<Input
 							placeholder="Digite aqui seu email"
 							type="email"
 							id="email"
-							{...register("email")}
+							label="Email"
+							register={register("email")}
 						/>
 						{errors.email && (
 							<ThemeLabelError>
@@ -80,22 +79,17 @@ const Login = () => {
 							</ThemeLabelError>
 						)}
 					</StyledContainerInput>
+
 					<StyledContainerPassword isPasswordVisible={isPasswordVisible}>
-						<ThemeLabelInput htmlFor="password">Senha</ThemeLabelInput>
-						<ThemeInput
-							placeholder="Digite aqui sua senha"
-							type={isPasswordVisible ? "text" : "password"}
+						<InputPassword
 							id="password"
-							{...register("password")}
+							label="Senha"
+							placeholder="Digite aqui sua senha"
+							showPassword={showPassword}
+							isPasswordVisible={isPasswordVisible}
+							register={register("password")}
 						/>
-						{isPasswordVisible ? (
-							<AiOutlineEye onClick={showPassword} className="form__passIcon" />
-						) : (
-							<AiOutlineEyeInvisible
-								onClick={showPassword}
-								className="form__passIcon"
-							/>
-						)}
+
 						{errors.password && (
 							<ThemeLabelError>
 								{" "}
